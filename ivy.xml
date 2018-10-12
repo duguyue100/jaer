@@ -92,7 +92,7 @@ MA 02110-1301  USA
         </dependency>
 
         <dependency org="net.java.linoleum" name="jlfgr" rev="1_0" />
-        <dependency org="com.neuronrobotics" name="nrjavaserial" rev="3.13.0" />
+        <dependency org="com.neuronrobotics" name="nrjavaserial" rev="3.14.0" />
         <dependency org="com.kitfox.svg" name="svg-salamander" rev="1.0" />
         <dependency org="org.uncommons.maths" name="uncommons-maths" rev="1.2.2a" />
         <!--<dependency org="io.github.andreas-solti.matrix-toolkits-java" name="mtj" rev="1.0.7" />-->
@@ -128,7 +128,9 @@ MA 02110-1301  USA
         <dependency org="org.bytedeco" name="javacv" rev="1.0" />
         
         <!--tensorflow has native libraries, but handled fine with this dependeny-->
-        <dependency org="org.tensorflow" name="tensorflow" rev="1.5.0" />
+        <dependency org="org.tensorflow" name="tensorflow" rev="1.6.0" />
+        <!--for tensorflow with GPU acceleration, but only with linux-->
+        <dependency org="org.tensorflow" name="libtensorflow_jni_gpu" rev="1.9.0" />
 
         <!--for reading yaml files that store the input format for tensorflow graphs, e.g. cnns-->
         <dependency org="com.esotericsoftware.yamlbeans" name="yamlbeans" rev="1.13" />
