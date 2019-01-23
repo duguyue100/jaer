@@ -485,27 +485,27 @@ public class AEChip extends Chip2D {
      */
     public void writeAdditionalAEFileOutputStreamHeader(AEFileOutputStream os) throws IOException, BackingStoreException {
         log.info("writing preferences for " + this.toString() + " to " + os);
-        os.writeHeaderLine(" AEChip: " + this.getClass().getName());
-        ByteArrayOutputStream bos = new ByteArrayOutputStream(200000);  // bos to hold preferences XML as byte array, tobi sized prefs as 186kB of text and about 2200 lines for set of preferences at INI
-        getPrefs().exportSubtree(bos);
-        bos.flush();
-        os.writeHeaderLine("Start of Preferences for this AEChip (search for \"End of Preferences\" to find end of this block)"); // write header to AE data file for prefs
-
-        // make a reader to read the prefs text line by line
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(bos.toByteArray())));
-        ByteArrayOutputStream bos2 = new ByteArrayOutputStream(200000); // make a byte stream to hold lines prepended by comment char
-        DataOutputStream dos = new DataOutputStream(bos2); // wrap in DOS to write comment chars and line endings
-
-        String line = null;
-        while ((line = reader.readLine()) != null) { // get a line of prefs from prefs in memory
-            dos.writeByte(AEDataFile.COMMENT_CHAR); // '#' // prepend comment
-            dos.writeBytes(line);
-            dos.writeByte(AEDataFile.EOL[0]); // '\r' 
-            dos.writeByte(AEDataFile.EOL[1]); // '\n'
-        }
-        os.write(bos2.toByteArray()); // write out entire reformatted prefs header
-        os.writeHeaderLine("End of Preferences for this AEChip"); // write end of prefs header
-        os.flush();
+        // os.writeHeaderLine(" AEChip: " + this.getClass().getName());
+        // ByteArrayOutputStream bos = new ByteArrayOutputStream(200000);  // bos to hold preferences XML as byte array, tobi sized prefs as 186kB of text and about 2200 lines for set of preferences at INI
+        // getPrefs().exportSubtree(bos);
+        // bos.flush();
+        // os.writeHeaderLine("Start of Preferences for this AEChip (search for \"End of Preferences\" to find end of this block)"); // write header to AE data file for prefs
+        //
+        // // make a reader to read the prefs text line by line
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(bos.toByteArray())));
+        // ByteArrayOutputStream bos2 = new ByteArrayOutputStream(200000); // make a byte stream to hold lines prepended by comment char
+        // DataOutputStream dos = new DataOutputStream(bos2); // wrap in DOS to write comment chars and line endings
+        //
+        // String line = null;
+        // while ((line = reader.readLine()) != null) { // get a line of prefs from prefs in memory
+        //     dos.writeByte(AEDataFile.COMMENT_CHAR); // '#' // prepend comment
+        //     dos.writeBytes(line);
+        //     dos.writeByte(AEDataFile.EOL[0]); // '\r'
+        //     dos.writeByte(AEDataFile.EOL[1]); // '\n'
+        // }
+        // os.write(bos2.toByteArray()); // write out entire reformatted prefs header
+        // os.writeHeaderLine("End of Preferences for this AEChip"); // write end of prefs header
+        // os.flush();
         log.info("done writing preferences to " + os + " at System.currentTimeMillis() " + System.currentTimeMillis());
 
     }
