@@ -81,7 +81,7 @@ public class AEFileOutputStream extends AEOutputStream implements AEDataFile {
                 writeHeaderLine(" HardwareInterface: " + chip.getHardwareInterface().toString());
             }
 
-            chip.writeAdditionalAEFileOutputStreamHeader(this);
+            // chip.writeAdditionalAEFileOutputStreamHeader(this);
             writeHeaderLine(" DataStartTime: System.currentTimeMillis() " + System.currentTimeMillis());
             writeHeaderLine(END_OF_HEADER_STRING);
 
